@@ -1,4 +1,4 @@
-const string = require('./schemas/string');
+const string = require('./string');
 
 module.exports = {
   string
