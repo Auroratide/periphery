@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const string = require('./string');
-const Scenarios = require('../../scenarios');
+const Scenario = require('../../scenario');
 
 describe.only('string schema', () => {
 
@@ -10,10 +10,10 @@ describe.only('string schema', () => {
     it('should create type scenarios', () => {
       const scenarios = string().scenarios().map(data);
 
-      expect(scenarios).to.deep.contain(Scenarios.number().data);
-      expect(scenarios).to.deep.contain(Scenarios.boolean().data);
-      expect(scenarios).to.deep.contain(Scenarios.object().data);
-      expect(scenarios).to.deep.contain(Scenarios.array().data);
+      expect(scenarios).to.deep.contain(Scenario.number().data);
+      expect(scenarios).to.deep.contain(Scenario.boolean().data);
+      expect(scenarios).to.deep.contain(Scenario.object().data);
+      expect(scenarios).to.deep.contain(Scenario.array().data);
     });
   });
 

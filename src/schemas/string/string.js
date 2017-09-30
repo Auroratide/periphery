@@ -1,10 +1,10 @@
-const Scenarios = require('../../scenarios');
+const Scenario = require('../../scenario');
 
 const type = () => [
-  Scenarios.number(),
-  Scenarios.boolean(),
-  Scenarios.object(),
-  Scenarios.array()
+  Scenario.number(),
+  Scenario.boolean(),
+  Scenario.object(),
+  Scenario.array()
 ];
 
 const scenarios = () => type();
