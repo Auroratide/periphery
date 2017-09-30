@@ -4,8 +4,12 @@
   "description": "Generate peripheral scenarios",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha './src/**/*.spec.js'"
   },
   "author": "Timothy Foster",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3"
+  }
 }
