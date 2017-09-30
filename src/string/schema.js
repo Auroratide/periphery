@@ -21,6 +21,16 @@ const uppercase = {
   validValueTransformer: prev => prev.toUpperCase()
 };
 
+const min = {
+  scenarioBuilder: limit => () => [Scenarios.shorterThan(limit)()],
+  validValueTransformer: limit => prev => prev.length < limit ? prev + prev[0].repeat(limit - prev.length) : prev
+};
+
+const max = {
+  scenarioBuilder: limit => () => [Scenarios.longerThan(limit)()],
+  validValueTransformer: limit => prev => prev.length > limit ? prev.substr(0, limit) : prev
+};
+
 module.exports = function Schema() {
   this._scenarioBuilders = [type.scenarioBuilder];
   this._validValueTransformers = [type.validValueTransformer];
@@ -37,6 +47,18 @@ module.exports = function Schema() {
   this.uppercase = () => {
     this._scenarioBuilders.push(uppercase.scenarioBuilder);
     this._validValueTransformers.push(uppercase.validValueTransformer);
+    return this;
+  };
+
+  this.min = limit => {
+    this._scenarioBuilders.push(min.scenarioBuilder(limit));
+    this._validValueTransformers.push(min.validValueTransformer(limit));
+    return this;
+  };
+
+  this.max = limit => {
+    this._scenarioBuilders.push(max.scenarioBuilder(limit));
+    this._validValueTransformers.push(max.validValueTransformer(limit));
     return this;
   };
 };

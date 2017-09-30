@@ -28,6 +28,18 @@ describe('string schema', () => {
 
       expect(scenarios).to.deep.contain(Scenarios.containsLowercase().data);
     });
+
+    it('should contain longerThan scenario when max length is required', () => {
+      const scenarios = string().max(5).scenarios().map(data);
+
+      expect(scenarios).to.deep.contain(Scenarios.longerThan(5)().data);
+    });
+
+    it('should contain shorterThan scenario when min length is required', () => {
+      const scenarios = string().min(5).scenarios().map(data);
+
+      expect(scenarios).to.deep.contain(Scenarios.shorterThan(5)().data);
+    });
   });
 
   describe('validValue', () => {
@@ -41,6 +53,14 @@ describe('string schema', () => {
 
     it('should be all uppercase', () => {
       expect(string().uppercase().validValue()).to.not.match(/[a-z]/);
+    });
+
+    it('should have at most the number of characters given by the limit', () => {
+      expect(string().max(7).validValue().length).to.be.at.most(7);
+    });
+
+    it('should have at least the number of characters given by the limit', () => {
+      expect(string().min(7).validValue().length).to.be.at.least(7);
     });
   });
 });
