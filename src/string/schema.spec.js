@@ -32,13 +32,13 @@ describe('string schema', () => {
     it('should contain longerThan scenario when max length is required', () => {
       const scenarios = string().max(5).scenarios().map(data);
 
-      expect(scenarios).to.deep.contain(Scenarios.longerThan(5)().data);
+      expect(scenarios).to.deep.contain(Scenarios.longerThan(5).data);
     });
 
     it('should contain shorterThan scenario when min length is required', () => {
       const scenarios = string().min(5).scenarios().map(data);
 
-      expect(scenarios).to.deep.contain(Scenarios.shorterThan(5)().data);
+      expect(scenarios).to.deep.contain(Scenarios.shorterThan(5).data);
     });
   });
 

@@ -22,12 +22,12 @@ const uppercase = {
 };
 
 const min = {
-  scenarioBuilder: limit => () => [Scenarios.shorterThan(limit)()],
+  scenarioBuilder: limit => () => [Scenarios.shorterThan(limit)],
   validValueTransformer: limit => prev => prev.length < limit ? prev + prev[0].repeat(limit - prev.length) : prev
 };
 
 const max = {
-  scenarioBuilder: limit => () => [Scenarios.longerThan(limit)()],
+  scenarioBuilder: limit => () => [Scenarios.longerThan(limit)],
   validValueTransformer: limit => prev => prev.length > limit ? prev.substr(0, limit) : prev
 };
 
