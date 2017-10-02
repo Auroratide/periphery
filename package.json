@@ -1,12 +1,26 @@
 {
   "name": "periphery",
-  "version": "0.0.1",
-  "description": "Generate peripheral scenarios",
+  "version": "0.1.0",
+  "description": "Generate peripheral scenarios from an object's schema",
   "main": "index.js",
   "scripts": {
     "test": "mocha './src/**/*.spec.js'"
   },
-  "author": "Timothy Foster",
+  "keywords": [
+    "edge",
+    "boundary",
+    "testing",
+    "validation",
+    "schema"
+  ],
+  "author": {
+    "name": "Timothy Foster",
+    "url": "http://auroratide.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Auroratide/periphery.git"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.1.2",
