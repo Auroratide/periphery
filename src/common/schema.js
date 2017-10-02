@@ -1,6 +1,9 @@
 function BaseSchema(defaultScenarios = [], defaultValidValue = null) {
   this._scenarios = defaultScenarios;
   this._validValue = defaultValidValue;
+  this._addScenario = s => this._scenarios.push(s);
+  this._addScenarios = s => this._scenarios = this._scenarios.concat(s);
+  this._setValidValue = v => this._validValue = v;
 
   this.scenarios = () => this._scenarios;
   this.validValue = () => this._validValue;

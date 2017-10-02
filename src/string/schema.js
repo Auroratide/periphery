@@ -10,28 +10,28 @@ const StringSchema = schema([
 ], 's');
 
 StringSchema.prototype.lowercase = function() {
-  this._scenarios.push(Scenarios.containsUppercase());
-  this._validValue = this._validValue.toLowerCase();
+  this._addScenario(Scenarios.containsUppercase());
+  this._setValidValue(this._validValue.toLowerCase());
   return this;
 };
 
 StringSchema.prototype.uppercase = function() {
-  this._scenarios.push(Scenarios.containsLowercase());
-  this._validValue = this._validValue.toUpperCase();
+  this._addScenario(Scenarios.containsLowercase());
+  this._setValidValue(this._validValue.toUpperCase());
   return this;
 };
 
 StringSchema.prototype.min = function(limit) {
-  this._scenarios.push(Scenarios.shorterThan(limit));
+  this._addScenario(Scenarios.shorterThan(limit));
   const v = this._validValue;
-  this._validValue = v.length < limit ? v + v[0].repeat(limit - v.length) : v;
+  this._setValidValue(v.length < limit ? v + v[0].repeat(limit - v.length) : v);
   return this;
 };
 
 StringSchema.prototype.max = function(limit) {
-  this._scenarios.push(Scenarios.longerThan(limit));
+  this._addScenario(Scenarios.longerThan(limit));
   const v = this._validValue;
-  this._validValue = v.length > limit ? v.substr(0, limit) : v;
+  this._setValidValue(v.length > limit ? v.substr(0, limit) : v);
   return this;
 };
 
