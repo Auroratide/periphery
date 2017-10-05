@@ -38,6 +38,15 @@ describe('object schema', () => {
       expect(scenarios).to.deep.contain(Scenarios.forField('field1', scenario, validValues).data);
       expect(scenarios).to.deep.contain(Scenarios.forField('field2', scenario, validValues).data);
     });
+
+    it('should remove the boolean and number scenarios', () => {
+      const scenarios = object().request().scenarios().map(data);
+
+      expect(scenarios).to.not.deep.contain(CommonScenarios.number().data);
+      expect(scenarios).to.not.deep.contain(CommonScenarios.boolean().data);
+      expect(scenarios).to.deep.contain(CommonScenarios.string().data);
+      expect(scenarios).to.deep.contain(CommonScenarios.array().data);
+    });
   });
 
   describe('validValue', () => {

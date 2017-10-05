@@ -26,4 +26,12 @@ ObjectSchema.prototype.keys = function(obj) {
   return this;
 };
 
+ObjectSchema.prototype.request = function() {
+  this._scenarios = this._scenarios.filter(scenario =>
+    scenario.name !== CommonScenarios.number().name && scenario.name !== CommonScenarios.boolean().name
+  );
+
+  return this;
+};
+
 module.exports = ObjectSchema;
