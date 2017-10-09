@@ -2,6 +2,8 @@ const { expect } = require('chai');
 const Scenarios = require('./scenarios');
 
 describe('string scenarios', () => {
+  const data = scenario => scenario.data;
+
   it('should contain uppercase letters', () => {
     expect(Scenarios.containsUppercase().data).to.match(/[A-Z]/);
   });
@@ -20,5 +22,24 @@ describe('string scenarios', () => {
     expect(Scenarios.shorterThan(1).data.length).to.be.lessThan(1);
     expect(Scenarios.shorterThan(2).data.length).to.be.lessThan(2);
     expect(Scenarios.shorterThan(4).data.length).to.be.lessThan(4);
+  });
+
+  it('should be empty', () => {
+    expect(Scenarios.empty().data).to.be.empty;
+  });
+
+  it('should be alphanumeric', () => {
+    expect(Scenarios.alphanumeric().data).to.match(/^[a-zA-Z0-9]*$/);
+  });
+
+  it('should be in DD-MM-YYYY format', () => {
+    expect(Scenarios.dayMonthYear().data).to.match(/^[0-3][0-9]-[01][0-9]-[0-9]{4}$/);
+  });
+
+  it('should include invalid months in ISO format', () => {
+    Scenarios.isoInvalidMonths().map(data).forEach(d => {
+      expect(d).to.match(/^[0-9]{4}-[0-9]{2}/);
+      expect(d).to.not.match(/^[0-9]{4}-(0[1-9]|1[0-2])/);
+    });
   });
 });

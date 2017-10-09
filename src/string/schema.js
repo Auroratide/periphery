@@ -35,4 +35,8 @@ StringSchema.prototype.max = function(limit) {
   return this;
 };
 
+StringSchema.prototype.isoDate = function() {
+  return this;
+};
+
 module.exports = StringSchema;
