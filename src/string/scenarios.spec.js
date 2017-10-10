@@ -42,4 +42,23 @@ describe('string scenarios', () => {
       expect(d).to.not.match(/^[0-9]{4}-(0[1-9]|1[0-2])/);
     });
   });
+
+  it('should include invalid days in ISO format', () => {
+    Scenarios.isoInvalidDays().map(data).forEach(d => {
+      const matches = d.match(/^[0-9]{4}-([0-9]{2})-([0-9]{2})/);
+      expect(matches).to.not.be.empty;
+      
+      const month = parseInt(matches[1]);
+      const day = parseInt(matches[2]);
+      
+      if(day !== 0) {
+        if([1, 3, 5, 7, 8, 10, 12].includes(month))
+          expect(day).to.not.be.lessThan(32);
+        else if(month === 2)
+          expect(day).to.not.be.lessThan(29);
+        else
+          expect(day).to.not.be.lessThan(31);
+      }
+    });
+  });
 });
