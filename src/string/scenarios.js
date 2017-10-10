@@ -28,3 +28,8 @@ module.exports.isoInvalidTimes = () => [
     scenario('is an ISO date with a minute beyond 60 minutes', '2017-01-01T00:60Z'),
     scenario('is an ISO date with a second beyond 60 seconds', '2017-01-01T00:00:60Z')
 ];
+
+module.exports.isoInvalidTimeZones = () => [
+    scenario('is an ISO date with time zone hour offset beyond 24 hours', '2017-01-01T00:00:00+24:00'),
+    scenario('is an ISO date with time zone minute offset 60 minutes', '2017-01-01T00:00:00+00:60')
+];

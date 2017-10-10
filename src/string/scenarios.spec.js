@@ -68,4 +68,11 @@ describe('string scenarios', () => {
       expect(d).to.not.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?Z$/);
     });
   });
+
+  it('should include invalid time zones in ISO format', () => {
+    Scenarios.isoInvalidTimeZones().map(data).forEach(d => {
+      expect(d).to.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?[+\-][0-9]{2}:[0-9]{2}/);
+      expect(d).to.not.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?[+/-]([01][0-9]|2[0-3]):[0-5][0-9]$/);
+    });
+  });
 });
