@@ -36,6 +36,12 @@ StringSchema.prototype.max = function(limit) {
 };
 
 StringSchema.prototype.isoDate = function() {
+  this._addScenario(Scenarios.empty());
+  this._addScenario(Scenarios.dayMonthYear());
+  this._addScenarios(Scenarios.isoInvalidDays());
+  this._addScenarios(Scenarios.isoInvalidMonths());
+  this._addScenarios(Scenarios.isoInvalidTimes());
+  this._addScenarios(Scenarios.isoInvalidTimeZones());
   return this;
 };
 

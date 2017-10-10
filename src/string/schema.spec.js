@@ -40,6 +40,17 @@ describe('string schema', () => {
 
       expect(scenarios).to.deep.contain(Scenarios.shorterThan(5).data);
     });
+
+    it('should contain date-related scenarios', () => {
+      const scenarios = string().isoDate().scenarios().map(data);
+
+      expect(scenarios).to.deep.contain(Scenarios.empty().data);
+      expect(scenarios).to.deep.contain(Scenarios.dayMonthYear().data);
+      expect(scenarios).to.deep.contain.members(Scenarios.isoInvalidDays().map(data));
+      expect(scenarios).to.deep.contain.members(Scenarios.isoInvalidMonths().map(data));
+      expect(scenarios).to.deep.contain.members(Scenarios.isoInvalidTimes().map(data));
+      expect(scenarios).to.deep.contain.members(Scenarios.isoInvalidTimeZones().map(data));
+    });
   });
 
   describe('validValue', () => {
