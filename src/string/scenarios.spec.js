@@ -61,4 +61,11 @@ describe('string scenarios', () => {
       }
     });
   });
+
+  it('should include invalid times in ISO format', () => {
+    Scenarios.isoInvalidTimes().map(data).forEach(d => {
+      expect(d).to.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(:[0-9]{2})?/);
+      expect(d).to.not.match(/^[0-9]{4}-[0-9]{2}-[0-9]{2}T([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?Z$/);
+    });
+  });
 });

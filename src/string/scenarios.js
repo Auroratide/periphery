@@ -22,3 +22,9 @@ module.exports.isoInvalidDays = () => [
     scenario('is an ISO date with a day after 30 on a month with 30 days', '2017-04-31'),
     scenario('is an ISO date with a day after 28 in February', '2017-02-29')
 ];
+
+module.exports.isoInvalidTimes = () => [
+    scenario('is an ISO date with an hour beyond 24 hours', '2017-01-01T24:00Z'),
+    scenario('is an ISO date with a minute beyond 60 minutes', '2017-01-01T00:60Z'),
+    scenario('is an ISO date with a second beyond 60 seconds', '2017-01-01T00:00:60Z')
+];
