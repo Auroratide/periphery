@@ -42,6 +42,8 @@ StringSchema.prototype.isoDate = function() {
   this._addScenarios(Scenarios.isoInvalidMonths());
   this._addScenarios(Scenarios.isoInvalidTimes());
   this._addScenarios(Scenarios.isoInvalidTimeZones());
+
+  this._setValidValue(new Date().toISOString());
   return this;
 };
 

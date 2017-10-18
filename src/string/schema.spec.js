@@ -73,5 +73,10 @@ describe('string schema', () => {
     it('should have at least the number of characters given by the limit', () => {
       expect(string().min(7).validValue().length).to.be.at.least(7);
     });
+
+    it('should be a valid ISO date time', () => {
+      expect(string().isoDate().validValue()).to.be.a('string');
+      expect(Date.parse(string().isoDate().validValue())).to.not.be.NaN;
+    });
   });
 });
