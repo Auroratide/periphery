@@ -5,6 +5,7 @@ const joi = require('joi');
 describe('periphery functional test', () => {
   const peripherySchema = periphery.object({
     stringField: periphery.string().uppercase().min(3),
+    dateString: periphery.string().isoDate(),
     objectField: periphery.object({
       stringField: periphery.string().lowercase().max(8)
     })
@@ -12,6 +13,7 @@ describe('periphery functional test', () => {
 
   const joiSchema = joi.object({
     stringField: joi.string().uppercase().min(3),
+    dateString: joi.string().isoDate(),
     objectField: joi.object({
       stringField: joi.string().lowercase().max(8)
     })

@@ -52,12 +52,7 @@ describe('string scenarios', () => {
       const day = parseInt(matches[2]);
       
       if(day !== 0) {
-        if([1, 3, 5, 7, 8, 10, 12].includes(month))
-          expect(day).to.not.be.lessThan(32);
-        else if(month === 2)
-          expect(day).to.not.be.lessThan(29);
-        else
-          expect(day).to.not.be.lessThan(31);
+        expect(day).to.not.be.lessThan(32);
       }
     });
   });
