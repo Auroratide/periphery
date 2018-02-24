@@ -1,6 +1,6 @@
 {
   "name": "periphery",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generate peripheral scenarios from an object's schema",
   "main": "index.js",
   "scripts": {
